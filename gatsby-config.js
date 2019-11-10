@@ -5,5 +5,30 @@
  */
 
 module.exports = {
-  plugins: [`gatsby-plugin-netlify-cms`],
+  siteMetadata: {
+    title: `The Baker's Planner`,
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/content/`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-netlify-cms`,
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        // Accepts all options defined by `babel-plugin-emotion` plugin.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        // Accepts all options defined by `gatsby-plugin-postcss` plugin.
+      },
+    },
+  ],
 }
