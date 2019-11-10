@@ -7,7 +7,7 @@ import NavLinks from "./navLinks"
 
 const NavList = styled.ul`
   ${tw`
-         text-white 
+         text-white inline
     `}
 `
 

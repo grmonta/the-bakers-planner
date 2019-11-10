@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 const NavLinks = styled.li`
   ${tw`
-        inline-block  px-1 md:px-2 
+          px-1 md:px-2 inline-block
     `}
 `
 
