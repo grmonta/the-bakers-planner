@@ -13,7 +13,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/content/`,
+        path: `${__dirname}/content/blog`,
       },
     },
     `gatsby-transformer-remark`,
