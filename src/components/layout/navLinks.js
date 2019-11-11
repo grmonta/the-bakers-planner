@@ -11,8 +11,6 @@ const NavLinks = styled.li`
 
 export default props => (
   <NavLinks>
-    <li>
-      <Link to={props.to}> {props.children} </Link>
-    </li>
+    <Link to={props.to}> {props.children} </Link>
   </NavLinks>
 )

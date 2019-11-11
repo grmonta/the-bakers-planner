@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 import NavLinks from "./navLinks"
 
-const NavList = styled.ul`
+const NavList = styled.div`
   ${tw`
          text-white inline
     `}
@@ -33,14 +33,12 @@ export default ({ children }) => {
   return (
     <nav>
       <NavList>
-        <ul>
-          <NavLogo>
-            <div>{data.site.siteMetadata.title}</div>
-          </NavLogo>
-          <NavLinks to="/">Home</NavLinks>
-          <NavLinks to="/about">About</NavLinks>
-          <NavLinks to="/recipes">Recipes</NavLinks>
-        </ul>
+        <NavLogo>
+          <div>{data.site.siteMetadata.title}</div>
+        </NavLogo>
+        <NavLinks to="/">Home</NavLinks>
+        <NavLinks to="/about">About</NavLinks>
+        <NavLinks to="/recipes">Recipes</NavLinks>
       </NavList>
     </nav>
   )
