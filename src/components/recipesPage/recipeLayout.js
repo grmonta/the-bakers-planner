@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 const RecipesContainer = styled.section`
   ${tw` 
-    p-4 border-t
+    p-4 border-t mt-6
   `}
 `
 

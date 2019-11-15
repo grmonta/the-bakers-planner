@@ -5,16 +5,19 @@ import Layout from "../components/layout/layout"
 import Header from "../components/layout/header"
 import PageTitle from "../components/layout/pageTitle"
 import PageContent from "../components/layout/pageContent"
-import Recipe from "../components/layout/recipe"
+import LinkButton from "../components/shared/linkButton"
+import Recipe from "../components/recipesPage/recipeLayout"
+import RecipesPageIntro from "../components/recipesPage/recipesPageIntro"
 
 export default ({ data }) => (
   <Layout>
     <Header></Header>
 
-    <PageTitle>Recipes for {data.site.siteMetadata.title}</PageTitle>
+    <PageTitle>Recipes</PageTitle>
     <PageContent>
-      <h1>Pick your recipes! Add your own! Add a list here </h1>
-      <h3> {data.allMarkdownRemark.totalCount} Recipes and counting </h3>
+      <RecipesPageIntro />
+      <LinkButton to="/recipeCalculator">Calculator</LinkButton>
+      {/* <h3> {data.allMarkdownRemark.totalCount} Recipes and counting test</h3> */}
 
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <Link to={node.fields.slug}>

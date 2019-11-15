@@ -13,7 +13,7 @@ export default ({ data }) => (
       {" "}
       I needed something to help me schedule start and to eating times for
       complicated bread recipes. I wanted to be able to adjust it based on what
-      time I wanted to eat. And so I made it.{" "}
+      time I wanted to eat. And so I made it. <input type="text"></input>
     </PageContent>
   </Layout>
 )
