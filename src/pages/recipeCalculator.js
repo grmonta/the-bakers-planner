@@ -3,13 +3,16 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Header from "../components/layout/header"
 import PageTitle from "../components/layout/pageTitle"
+import PageContent from "../components/layout/pageContent"
 import CalculatorForm from "../components/recipeCalculator/calculatorForm"
 
 export default ({ data }) => (
   <Layout>
     <Header />
     <PageTitle> {data.site.siteMetadata.title} Calculator</PageTitle>
-    <CalculatorForm />
+    <PageContent>
+      <CalculatorForm />
+    </PageContent>
   </Layout>
 )
 
