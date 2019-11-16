@@ -3,6 +3,8 @@ import Moment from "react-moment"
 
 import styled from "@emotion/styled"
 import tw from "tailwind.macro"
+import FormLabel from "./formLabel"
+import FormInput from "./formInput"
 
 const RecipeFormContainer = styled.form`
   ${tw` 
@@ -12,21 +14,8 @@ const RecipeFormContainer = styled.form`
 
 const RecipeFormWrapper = styled.div`
   ${tw`
-   flex flex-wrap mx-3 mb-6
+   md:flex md:items-center mb-6
   
-  `}
-`
-
-const Label = styled.label`
-  ${tw` 
-block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2
-  `}
-`
-
-const Title = styled.h1`
-  ${tw`
-    text-purple-500
-      
   `}
 `
 
@@ -41,9 +30,23 @@ const date = new Date()
 export default props => (
   <RecipeFormContainer>
     <RecipeFormWrapper>
-      <Label>Yo</Label>
-      <Excerpt>yo could be props</Excerpt>
-      <Title></Title>
+      <FormLabel labelName="Name of Step" for="Step Name" />
+      <FormInput
+        type="text"
+        name="nameS"
+        id="name-of-step"
+        placeholder="ex: first proof"
+      />
+
+      <FormLabel labelName="Time" for="time of step" />
+      <FormInput
+        type="number"
+        name="nameS"
+        id="name-of-step"
+        placeholder="ex: first proof"
+        min="0"
+        max="1000"
+      />
     </RecipeFormWrapper>
     {/* pass props into moment with user form data for hours days and mins */}
     Start:
