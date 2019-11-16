@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 const LabelContainer = styled.div`
   ${tw`
-    md:w-1/2
+    md:w-1/3
       
   `}
 `

@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 const InputContainer = styled.div`
   ${tw`
-  md:w-1/3
+  md:w-2/3
 `}
 `
 
@@ -17,14 +17,16 @@ const FormInput = styled.div`
 `
 
 export default props => (
-  <FormInput>
-    <input
-      type={props.type}
-      name={props.id}
-      id={props.id}
-      placeholder={props.placeholder}
-      min={props.min}
-      max={props.max}
-    />
-  </FormInput>
+  <InputContainer>
+    <FormInput>
+      <input
+        type={props.type}
+        name={props.id}
+        id={props.id}
+        placeholder={props.placeholder}
+        min={props.min}
+        max={props.max}
+      />
+    </FormInput>
+  </InputContainer>
 )
