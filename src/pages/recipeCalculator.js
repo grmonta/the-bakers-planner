@@ -9,7 +9,7 @@ import CalculatorForm from "../components/recipeCalculator/calculatorForm"
 export default ({ data }) => (
   <Layout>
     <Header />
-    <PageTitle> {data.site.siteMetadata.title} Calculator</PageTitle>
+    <PageTitle> Calculator</PageTitle>
     <PageContent>
       <CalculatorForm />
     </PageContent>
