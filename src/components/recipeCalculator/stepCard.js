@@ -1,15 +1,57 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-//TODO 5: Add an onClick attribute to the edit button with the toggleEditing prop as its value.
-//TODO 6: Use the isEditing property of the item to toggle between showing Edit or Save as the button text.
-//TODO 8: Use the item.isEditing property to show either the input fields or just display the name and price
-// TODO of the item within the card body.
-//TODO 9: Add the value attribute to the name input element with a value of item.name and
-// TODO: the price input element with item.price
-//TODO 13: Add onChange to the argument list
-//TODO 14: Use an arrow function which accepts an event and  returns the onChange prop as the value to the onChange attribute
-// TODO: to both the name and price input elements passing it the event and index.
+import styled from "@emotion/styled"
+import tw from "tailwind.macro"
+
+const CardContainer = styled.div`
+  ${tw` 
+    flex flex-wrap  
+
+
+  `}
+`
+
+const ButtonRow = styled.div`
+  ${tw` 
+    w-full mb-2 inline-flex my-1 
+
+  `}
+`
+const EditButton = styled.button`
+  ${tw` 
+    w-1/2 mb-2
+bg-white  hover:bg-teal-700 hover:text-white text-teal-700 border border-teal-800 font-semibold py-1 px-2 rounded mr-2 cursor-pointer text-center
+  `}
+`
+
+const DeleteButton = styled.button`
+  ${tw` 
+    w-1/2 mb-2
+bg-white hover:bg-red-800 hover:text-white text-red-700 border border-red-700 font-semibold py-1 px-2 rounded mr-2 cursor-pointer text-center
+  `}
+`
+
+const CardContent = styled.div`
+  ${tw` 
+    w-full flex flex-col
+
+  `}
+`
+
+const CardTitle = styled.h4`
+  ${tw` 
+    text-pink-400
+
+  `}
+`
+
+const CardTime = styled.p`
+  ${tw` 
+    w-full mb-2 inline-flex my-1 
+
+  `}
+`
 
 export const StepCard = ({
   toggleEditing,
@@ -18,7 +60,7 @@ export const StepCard = ({
   index,
   onDelete,
 }) => (
-  <div className="col-md-6 col-lg-3">
+  <CardContainer className="col-md-6 col-lg-3">
     <div className="card mb-3">
       <div className="card-body">
         {step.isEditing ? (
@@ -54,28 +96,27 @@ export const StepCard = ({
             />
           </div>
         ) : (
-          <div>
-            <h4 className="card-title text-center">{step.name}</h4>
-            <h2>
-              {step.hours}:{step.minutes}
-            </h2>
-          </div>
+          <CardContent>
+            <CardTitle>{step.name}</CardTitle>
+            <CardTime>{step.hours} hours</CardTime>
+            <CardTime>{step.minutes} minutes</CardTime>
+          </CardContent>
         )}
 
         <div className="row justify-content-center">
-          <div>
-            <button type="button" onClick={toggleEditing}>
+          <ButtonRow>
+            <EditButton type="button" onClick={toggleEditing}>
               {step.isEditing ? "Save" : "Edit"}
-            </button>
+            </EditButton>
 
-            <button type="button" onClick={onDelete}>
+            <DeleteButton type="button" onClick={onDelete}>
               Delete
-            </button>
-          </div>
+            </DeleteButton>
+          </ButtonRow>
         </div>
       </div>
     </div>
-  </div>
+  </CardContainer>
 )
 
 StepCard.propTypes = {

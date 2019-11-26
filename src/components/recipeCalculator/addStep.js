@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import tw from "tailwind.macro"
 import FormLabel from "./formLabel"
+import FormButton from "../shared/formButton"
 
 const FormContainer = styled.div`
   ${tw`
@@ -19,7 +20,7 @@ const InputGroup = styled.div`
 
 const FormInputContainer = styled.div`
   ${tw`
-  w-full  px-3 mb-6 md:mb-0
+  w-full  px-3 mb-4
 `}
 `
 
@@ -31,23 +32,29 @@ const FormInputHalf = styled.div`
 
 const FormInputStyle = styled.div`
   ${tw` 
-    bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500
+    bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight  focus:bg-white focus:border-purple-500 mb-2
 
   `}
 `
 
 const ButtonRow = styled.div`
   ${tw` 
-    w-1/3 mx-auto
+    w-1/4 
+
+  `}
+`
+const Button = styled.button`
+  ${tw` 
+    bg-teal-700 hover:bg-teal-800 text-white font-semibold py-1 px-2 rounded mr-2 cursor-pointer text-center
 
   `}
 `
 
-const FormButton = styled.div`
-  ${tw`
-        bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded mr-2 cursor-pointer
-    `}
-`
+// const FormButton = styled.div`
+//   ${tw`
+//         bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded mr-2 cursor-pointer
+//     `}
+// `
 
 export const AddStep = ({ name, hours, minutes, onChange, onSubmit }) => (
   <FormContainer>
@@ -99,9 +106,7 @@ export const AddStep = ({ name, hours, minutes, onChange, onSubmit }) => (
         </FormInputHalf>
       </InputGroup>
       <ButtonRow>
-        <FormButton>
-          <button type="submit">Add Step </button>
-        </FormButton>
+        <Button type="submit">Add</Button>
       </ButtonRow>
     </form>
   </FormContainer>
