@@ -1,12 +1,13 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
+import CalculatorIntro from "./calculatorIntro"
 import { StepCard } from "./stepCard"
 import { AddStep } from "./addStep"
 
 class CalculatorApp extends Component {
   state = {
     name: "",
-    hours: 0,
-    minutes: 0,
+    hours: "",
+    minutes: "",
     steps: [],
   }
 
@@ -90,31 +91,38 @@ class CalculatorApp extends Component {
     const { name, hours, minutes } = this.state
 
     return (
-      <div>
-        <AddStep
-          name={name}
-          hours={hours}
-          minutes={minutes}
-          onChange={this.handleInputChange}
-          onSubmit={this.addStep}
-        />
-        <br />
-        <h1 className="display-4 my-4 text-center text-muted">
-          Saved Steps below
-        </h1>
+      <Fragment>
+        <CalculatorIntro>
+          Try out your own recipe by adding each step and it's time below! Then
+          you can calculate when it will be done.
+        </CalculatorIntro>
+
         <div>
-          {this.state.steps.map((step, index) => (
-            <StepCard
-              key={step.id}
-              index={index}
-              step={step}
-              toggleEditing={() => this.toggleStepEditing(index)}
-              onDelete={() => this.onDelete(index)}
-              onChange={this.handleStepUpdate}
-            />
-          ))}
+          <AddStep
+            name={name}
+            hours={hours}
+            minutes={minutes}
+            onChange={this.handleInputChange}
+            onSubmit={this.addStep}
+          />
+          <br />
+          <h1 className="display-4 my-4 text-center text-muted">
+            Saved Steps below
+          </h1>
+          <div>
+            {this.state.steps.map((step, index) => (
+              <StepCard
+                key={step.id}
+                index={index}
+                step={step}
+                toggleEditing={() => this.toggleStepEditing(index)}
+                onDelete={() => this.onDelete(index)}
+                onChange={this.handleStepUpdate}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

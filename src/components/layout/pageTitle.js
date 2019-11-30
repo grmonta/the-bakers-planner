@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 const PageTitle = styled.h1`
   ${tw`
-       border-b-2  text-gray-800 text-2xl font-bold  mt-4 mb-4 mx-auto py-4 px-2 text-center max-w-3xl   
+       border-b-2  text-gray-800 text-xl font-bold  mt-1 mb-4 mx-auto py-4 px-2 text-center max-w-3xl   
     `}
 `
 

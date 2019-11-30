@@ -8,31 +8,31 @@ import FormButton from "../shared/formButton"
 
 const FormContainer = styled.div`
   ${tw`
-  w-full max-w-lg mx-auto
+  w-full max-w-sm  bg-gray-100 border-b-2 border-gray-400 pb-4
   `}
 `
 
 const InputGroup = styled.div`
   ${tw`
-  flex flex-wrap -mx-3 mb-2 items-center 
+  flex flex-wrap -mx-3  items-center 
 `}
 `
 
 const FormInputContainer = styled.div`
   ${tw`
-  w-full  px-3 mb-4
+  w-full  px-3 mb-2 
 `}
 `
 
 const FormInputHalf = styled.div`
   ${tw`
-  w-1/2 px-3 mb-6 md:mb-0
+  w-1/2 px-3 mb-2 md:mb-0
 `}
 `
 
 const FormInputStyle = styled.div`
   ${tw` 
-    bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight  focus:bg-white focus:border-purple-500 mb-2
+    bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-normal  focus:bg-white focus:border-purple-500 mb-2
 
   `}
 `
@@ -81,7 +81,6 @@ export const AddStep = ({ name, hours, minutes, onChange, onSubmit }) => (
               min="0"
               max="1000"
               required
-              placeholder="0"
               name="hours"
               value={hours}
               onChange={onChange}
@@ -97,7 +96,6 @@ export const AddStep = ({ name, hours, minutes, onChange, onSubmit }) => (
               min="0"
               max="59"
               required
-              placeholder="0"
               name="minutes"
               value={minutes}
               onChange={onChange}
