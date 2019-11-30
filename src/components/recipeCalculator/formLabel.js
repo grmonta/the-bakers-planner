@@ -11,7 +11,7 @@ const LabelContainer = styled.div`
 `
 const FormLabel = styled.label`
   ${tw` 
-block text-gray-600 font-bold text-sm mb-1 md:mb-0 pr-1 
+block text-gray-600 font-bold  text-sm mb-1 md:mb-0 pr-1 
   `}
 `
 

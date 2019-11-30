@@ -130,8 +130,8 @@ export const StepCard = ({
 StepCard.propTypes = {
   step: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    hours: PropTypes.number.isRequired,
-    minutes: PropTypes.number.isRequired,
+    hours: PropTypes.string.isRequired,
+    minutes: PropTypes.string.isRequired,
   }),
   toggleEditing: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
