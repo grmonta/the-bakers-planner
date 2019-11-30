@@ -7,19 +7,19 @@ import FormLabel from "./formLabel"
 
 const CardContainer = styled.div`
   ${tw` 
-     mt-2 max-w-s flex flex-col w-full border rounded border-gray-400  pt-1 px-2 mb-4
+     mt-2 max-w-sm flex flex-col w-full border rounded border-gray-400  px-3 py-2 mb-4 bg-gray-200
   `}
 `
 const LeftContent = styled.div`
   ${tw` 
-     w-full
+     w-2/3
      
   `}
 `
 
 const RightContent = styled.div`
   ${tw` 
-      w-full
+      w-1/2
   `}
 `
 
@@ -32,21 +32,21 @@ const CardContent = styled.div`
 
 const CardTitle = styled.h4`
   ${tw` 
-    text-gray-900 text-xl mb-2 font-semibold
+    text-gray-900 text-lg 
 
   `}
 `
 
 const CardTime = styled.div`
   ${tw` 
-    text-gray-900 text-lg pr-2
+    text-gray-900 pr-2 pb-2
 
   `}
 `
 
 const PrimaryText = styled.span`
   ${tw` 
-    text-gray-700 text-lg pr-1
+    text-gray-900 text-xl pr-1 font-semibold
 
   `}
 `
@@ -59,21 +59,21 @@ const SecondaryText = styled.span`
 
 const ButtonRow = styled.div`
   ${tw` 
-     mt-1 inline-flex
+      inline-flex mt-2
 
   `}
 `
 const EditButton = styled.button`
   ${tw` 
      
-bg-white hover:underline text-gray-700  hover:text-teal-700  text-sm font-semibold py-1  rounded  cursor-pointer 
+ hover:underline text-gray-700  hover:text-teal-700  text-sm font-semibold py-1  rounded  cursor-pointer pr-1
   `}
 `
 
 const DeleteButton = styled.button`
   ${tw` 
     
-bg-white hover:underline hover:text-red-700 text-gray-700 text-sm font-semibold py-1 px-2 rounded cursor-pointer
+ hover:underline hover:text-red-700 text-gray-700 text-sm font-semibold py-1 px-2 rounded cursor-pointer
   `}
 `
 
@@ -85,7 +85,7 @@ const InputGroup = styled.div`
 
 const FormInputContainer = styled.div`
   ${tw`
-  w-full  pl-2
+  w-full  
 `}
 `
 
@@ -96,7 +96,7 @@ const FormInputHalf = styled.div`
 `
 const FormInputStyle = styled.input`
   ${tw` 
-    bg-gray-300  border-2 border-gray-300 rounded w-full px-1 text-gray-900 leading-normal  focus:bg-white focus:border-purple-700 
+      border-2 border-gray-400 rounded w-full px-1 text-gray-900 leading-normal  focus:bg-white focus:border-purple-700 
 
   `}
 `
@@ -112,7 +112,15 @@ export const StepCard = ({
     {step.isEditing ? (
       <LeftContent>
         <InputGroup>
-          <FormInputHalf>
+          <FormInputContainer>
+            <FormLabel for="step name" labelName="Step Name" />
+            <FormInputStyle
+              type="text"
+              name="name"
+              value={step.name}
+              onChange={event => onChange(event, index)}
+              required
+            />
             <FormLabel for="step name" labelName="Hours" />
             <FormInputStyle
               type="number"
@@ -130,16 +138,6 @@ export const StepCard = ({
               min="0"
               max="59"
               value={step.minutes}
-              onChange={event => onChange(event, index)}
-              required
-            />
-          </FormInputHalf>
-          <FormInputContainer>
-            <FormLabel for="step name" labelName="Step Name" />
-            <FormInputStyle
-              type="text"
-              name="name"
-              value={step.name}
               onChange={event => onChange(event, index)}
               required
             />
