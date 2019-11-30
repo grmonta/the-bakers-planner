@@ -49,15 +49,9 @@ const Button = styled.button`
   `}
 `
 
-// const FormButton = styled.div`
-//   ${tw`
-//         bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded mr-2 cursor-pointer
-//     `}
-// `
-
 export const AddStep = ({ name, hours, minutes, onChange, onSubmit }) => (
   <FormContainer>
-    <form onSubmit={onSubmit} className="form-inline">
+    <form onSubmit={onSubmit}>
       <InputGroup>
         <FormInputContainer>
           <FormLabel for="step name" />

@@ -1,14 +1,21 @@
 import React, { Component, Fragment } from "react"
 import CalculatorIntro from "./calculatorIntro"
+import Moment from "react-moment"
 import { StepCard } from "./stepCard"
 import { AddStep } from "./addStep"
+import { PickTime } from "./pickTime"
 
 class CalculatorApp extends Component {
   state = {
     name: "",
     hours: "",
     minutes: "",
+
     steps: [],
+    totalHours: 0,
+    totalMinutes: 0,
+    startDay: "",
+    startTime: "",
   }
 
   handleInputChange = event => {
@@ -20,12 +27,29 @@ class CalculatorApp extends Component {
     })
   }
 
+  handleTimeInputChange = event => {
+    const target = event.target
+    const value = target.value
+    const name = target.name
+    this.setState({
+      [name]: value,
+    })
+  }
+
   addStep = event => {
     event.preventDefault()
-    const { name, hours, minutes } = this.state
+    const { name, hours, minutes, totalHours, totalMinutes } = this.state
+    const integerHours = parseInt(hours)
+    const integerMinutes = parseInt(minutes)
+
     const stepsInState = this.state.steps
     const stepsArrayLength = stepsInState.length
     const id = stepsArrayLength ? stepsInState[stepsArrayLength - 1].id + 1 : 1
+
+    this.setState(state => ({
+      totalHours: integerHours + parseInt(this.state.totalHours),
+      totalMinutes: integerMinutes + parseInt(this.state.totalMinutes),
+    }))
 
     this.setState({
       steps: [
@@ -33,17 +57,18 @@ class CalculatorApp extends Component {
         Object.assign(
           {},
           {
-            id,
-            name,
-            hours,
-            minutes,
+            name: name,
+            hours: hours,
+            minutes: minutes,
+            id: id,
           }
         ),
       ],
       name: "",
-      hours: "",
       minutes: "",
+      hours: "",
     })
+    console.log({ totalHours })
   }
 
   toggleStepEditing = index => {
@@ -87,8 +112,22 @@ class CalculatorApp extends Component {
     })
   }
 
+  pickTime = event => {
+    event.preventDefault()
+
+    console.log(this.state.startTime)
+  }
+
   render() {
-    const { name, hours, minutes } = this.state
+    const {
+      name,
+      hours,
+      minutes,
+      startTime,
+      startDay,
+      totalHours,
+      totalMinutes,
+    } = this.state
 
     return (
       <Fragment>
@@ -106,6 +145,14 @@ class CalculatorApp extends Component {
             onSubmit={this.addStep}
           />
           <br />
+          <div>
+            <PickTime
+              startTime={startTime}
+              startDay={startDay}
+              onChange={this.handleTimeInputChange}
+              onSubmit={this.pickTime}
+            />
+          </div>
 
           <div>
             {this.state.steps.map((step, index) => (
@@ -119,6 +166,14 @@ class CalculatorApp extends Component {
               />
             ))}
           </div>
+        </div>
+        <div>
+          <Moment
+            format="dddd @ hh:mm a"
+            add={{ hours: totalHours, minutes: totalMinutes }}
+          >
+            {`${startDay} ${startTime}`}
+          </Moment>
         </div>
       </Fragment>
     )
