@@ -106,9 +106,7 @@ class CalculatorApp extends Component {
             onSubmit={this.addStep}
           />
           <br />
-          <h1 className="display-4 my-4 text-center text-muted">
-            Saved Steps below
-          </h1>
+
           <div>
             {this.state.steps.map((step, index) => (
               <StepCard

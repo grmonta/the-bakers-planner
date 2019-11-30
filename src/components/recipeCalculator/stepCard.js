@@ -3,61 +3,100 @@ import PropTypes from "prop-types"
 
 import styled from "@emotion/styled"
 import tw from "tailwind.macro"
+import FormLabel from "./formLabel"
 
 const CardContainer = styled.div`
   ${tw` 
-     mb-4 max-w-sm flex w-full border border-black
+     mt-2 max-w-s flex flex-col w-full border rounded border-gray-400  pt-1 px-2 mb-4
   `}
 `
 const LeftContent = styled.div`
   ${tw` 
-    py-2 bg-pink-400 w-2/3
+     w-full
+     
   `}
 `
 
 const RightContent = styled.div`
   ${tw` 
-    py-2 bg-blue-400 w-1/3
-  `}
-`
-
-const ButtonRow = styled.div`
-  ${tw` 
-     mb-2  my-1 
-
-  `}
-`
-const EditButton = styled.button`
-  ${tw` 
-     mb-2
-bg-white  hover:bg-teal-700 hover:text-white text-teal-700 border border-teal-800 font-semibold py-1 px-2 rounded mr-2 cursor-pointer text-center
-  `}
-`
-
-const DeleteButton = styled.button`
-  ${tw` 
-    mb-2
-bg-white hover:bg-red-800 hover:text-white text-red-700 border border-red-700 font-semibold py-1 px-2 rounded mr-2 cursor-pointer text-center
+      w-full
   `}
 `
 
 const CardContent = styled.div`
   ${tw` 
-    flex flex-col
+    flex flex-col 
 
   `}
 `
 
 const CardTitle = styled.h4`
   ${tw` 
-    text-green-900
+    text-gray-900 text-xl mb-2 font-semibold
 
   `}
 `
 
-const CardTime = styled.p`
+const CardTime = styled.div`
   ${tw` 
-    text-green-400
+    text-gray-900 text-lg pr-2
+
+  `}
+`
+
+const PrimaryText = styled.span`
+  ${tw` 
+    text-gray-700 text-lg pr-1
+
+  `}
+`
+const SecondaryText = styled.span`
+  ${tw` 
+    text-gray-600 text-xs font-semibold pr-2
+
+  `}
+`
+
+const ButtonRow = styled.div`
+  ${tw` 
+     mt-1 inline-flex
+
+  `}
+`
+const EditButton = styled.button`
+  ${tw` 
+     
+bg-white hover:underline text-gray-700  hover:text-teal-700  text-sm font-semibold py-1  rounded  cursor-pointer 
+  `}
+`
+
+const DeleteButton = styled.button`
+  ${tw` 
+    
+bg-white hover:underline hover:text-red-700 text-gray-700 text-sm font-semibold py-1 px-2 rounded cursor-pointer
+  `}
+`
+
+const InputGroup = styled.div`
+  ${tw`
+  flex 
+`}
+`
+
+const FormInputContainer = styled.div`
+  ${tw`
+  w-full  pl-2
+`}
+`
+
+const FormInputHalf = styled.div`
+  ${tw`
+  w-1/2  
+`}
+`
+const FormInputStyle = styled.input`
+  ${tw` 
+    bg-gray-300  border-2 border-gray-300 rounded w-full px-1 text-gray-900 leading-normal  focus:bg-white focus:border-purple-700 
 
   `}
 `
@@ -71,45 +110,51 @@ export const StepCard = ({
 }) => (
   <CardContainer>
     {step.isEditing ? (
-      <CardContainer>
-        <LeftContent>
-          <input
-            type="text"
-            name="name"
-            placeholder="Step Name*"
-            value={step.name}
-            onChange={event => onChange(event, index)}
-            required
-          />
-          <input
-            type="number"
-            name="hours"
-            min="0"
-            max="1000"
-            placeholder="Hours*"
-            value={step.hours}
-            onChange={event => onChange(event, index)}
-            required
-          />
-          <input
-            type="number"
-            name="minutes"
-            min="0"
-            max="59"
-            placeholder="Minutes*"
-            value={step.minutes}
-            onChange={event => onChange(event, index)}
-            required
-          />
-        </LeftContent>
-      </CardContainer>
+      <LeftContent>
+        <InputGroup>
+          <FormInputHalf>
+            <FormLabel for="step name" labelName="Hours" />
+            <FormInputStyle
+              type="number"
+              name="hours"
+              min="0"
+              max="1000"
+              value={step.hours}
+              onChange={event => onChange(event, index)}
+              required
+            />
+            <FormLabel for="step name" labelName="Minutes" />
+            <FormInputStyle
+              type="number"
+              name="minutes"
+              min="0"
+              max="59"
+              value={step.minutes}
+              onChange={event => onChange(event, index)}
+              required
+            />
+          </FormInputHalf>
+          <FormInputContainer>
+            <FormLabel for="step name" labelName="Step Name" />
+            <FormInputStyle
+              type="text"
+              name="name"
+              value={step.name}
+              onChange={event => onChange(event, index)}
+              required
+            />
+          </FormInputContainer>
+        </InputGroup>
+      </LeftContent>
     ) : (
       <LeftContent>
-        <CardContent>
+        <CardTime>
           <CardTitle>{step.name}</CardTitle>
-          <CardTime>{step.hours} hours</CardTime>
-          <CardTime>{step.minutes} minutes</CardTime>
-        </CardContent>
+          <PrimaryText>{step.hours}</PrimaryText>
+          <SecondaryText>hour(s)</SecondaryText>
+          <PrimaryText>{step.minutes}</PrimaryText>
+          <SecondaryText>minute(s)</SecondaryText>
+        </CardTime>
       </LeftContent>
     )}
 
