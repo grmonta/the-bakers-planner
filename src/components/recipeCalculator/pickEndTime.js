@@ -12,17 +12,17 @@ import FormInstructions from "./formInstructions"
 import FormInputStyle from "./formInputStyle"
 import Button from "../shared/formButton"
 
-export const PickTime = ({ startDay, startTime, onChange, onSubmit }) => (
+export const PickEndTime = ({ endDay, endTime, onChange, onSubmit }) => (
   <FormContainer>
     <form onSubmit={onSubmit}>
       <InputGroup>
-        <FormInstructions>Choose start time:</FormInstructions>
+        <FormInstructions>Choose end time:</FormInstructions>
         <FormInputContainer>
           <FormInputStyle
             type="date"
-            placeholder="Start Day*"
-            name="startDay"
-            value={startDay}
+            placeholder="End Day*"
+            name="endDay"
+            value={endDay}
             required
             onChange={onChange}
           />
@@ -31,21 +31,21 @@ export const PickTime = ({ startDay, startTime, onChange, onSubmit }) => (
           <FormInputStyle
             type="time"
             required
-            placeholder="Start Time*"
-            name="startTime"
-            value={startTime}
+            placeholder="End Time*"
+            name="endTime"
+            value={endTime}
             onChange={onChange}
           />
         </FormInputContainer>
       </InputGroup>
-      <Button type="submit">Calculate</Button>
+      <Button type="submit">Calculate </Button>
     </form>
   </FormContainer>
 )
 
-PickTime.propTypes = {
+PickEndTime.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  startDay: PropTypes.string.isRequired,
-  startTime: PropTypes.string.isRequired,
+  endDay: PropTypes.string.isRequired,
+  endTime: PropTypes.string.isRequired,
 }
