@@ -7,7 +7,7 @@ import FormLabel from "./formLabel"
 
 const FormContainer = styled.div`
   ${tw`
-  w-full max-w-sm   border border-gray-400 p-4 rounded
+  w-full    border border-gray-400 p-4 rounded
   `}
 `
 

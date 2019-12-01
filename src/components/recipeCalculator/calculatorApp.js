@@ -1,9 +1,23 @@
 import React, { Component, Fragment } from "react"
+import styled from "@emotion/styled"
+import tw from "tailwind.macro"
 import CalculatorIntro from "./calculatorIntro"
 import Moment from "react-moment"
 import { StepCard } from "./stepCard"
 import { AddStep } from "./addStep"
 import { PickTime } from "./pickTime"
+
+const CalculatorPageFlexContainer = styled.div`
+  ${tw`
+  flex flex-wrap
+  `}
+`
+
+const HalfWidthContainer = styled.div`
+  ${tw`
+  w-full sm:w-1/2 pr-2
+  `}
+`
 
 class CalculatorApp extends Component {
   state = {
@@ -38,18 +52,11 @@ class CalculatorApp extends Component {
 
   addStep = event => {
     event.preventDefault()
-    const { name, hours, minutes, totalHours, totalMinutes } = this.state
-    const integerHours = parseInt(hours)
-    const integerMinutes = parseInt(minutes)
+    const { name, hours, minutes } = this.state
 
     const stepsInState = this.state.steps
     const stepsArrayLength = stepsInState.length
     const id = stepsArrayLength ? stepsInState[stepsArrayLength - 1].id + 1 : 1
-
-    this.setState(state => ({
-      totalHours: integerHours + parseInt(this.state.totalHours),
-      totalMinutes: integerMinutes + parseInt(this.state.totalMinutes),
-    }))
 
     this.setState({
       steps: [
@@ -68,7 +75,6 @@ class CalculatorApp extends Component {
       minutes: "",
       hours: "",
     })
-    console.log({ totalHours })
   }
 
   toggleStepEditing = index => {
@@ -114,8 +120,24 @@ class CalculatorApp extends Component {
 
   pickTime = event => {
     event.preventDefault()
+    const { totalHours, totalMinutes, steps } = this.state
 
-    console.log(this.state.startTime)
+    const minutesArray = []
+    const hoursArray = []
+
+    const addToArray = steps.map(step => {
+      hoursArray.push(parseInt(step.hours))
+      minutesArray.push(parseInt(step.minutes))
+    })
+
+    const minutesArrayTotal = minutesArray.reduce((a, b) => a + b, 0)
+
+    const hoursArrayTotal = hoursArray.reduce((a, b) => a + b, 0)
+
+    this.setState(state => ({
+      totalHours: hoursArrayTotal,
+      totalMinutes: minutesArrayTotal,
+    }))
   }
 
   render() {
@@ -135,26 +157,34 @@ class CalculatorApp extends Component {
           Try out your own recipe by adding each step and it's time below! Then
           you can calculate when it will be done.
         </CalculatorIntro>
+        <CalculatorPageFlexContainer>
+          <HalfWidthContainer>
+            <AddStep
+              name={name}
+              hours={hours}
+              minutes={minutes}
+              onChange={this.handleInputChange}
+              onSubmit={this.addStep}
+            />
+          </HalfWidthContainer>
 
-        <div>
-          <AddStep
-            name={name}
-            hours={hours}
-            minutes={minutes}
-            onChange={this.handleInputChange}
-            onSubmit={this.addStep}
-          />
-          <br />
-          <div>
+          <HalfWidthContainer>
             <PickTime
               startTime={startTime}
               startDay={startDay}
               onChange={this.handleTimeInputChange}
               onSubmit={this.pickTime}
             />
-          </div>
+            <button> </button>
+            <Moment
+              format="dddd @ hh:mm a"
+              add={{ hours: totalHours, minutes: totalMinutes }}
+            >
+              {`${startDay} ${startTime}`}
+            </Moment>
+          </HalfWidthContainer>
 
-          <div>
+          <HalfWidthContainer>
             {this.state.steps.map((step, index) => (
               <StepCard
                 key={step.id}
@@ -165,16 +195,8 @@ class CalculatorApp extends Component {
                 onChange={this.handleStepUpdate}
               />
             ))}
-          </div>
-        </div>
-        <div>
-          <Moment
-            format="dddd @ hh:mm a"
-            add={{ hours: totalHours, minutes: totalMinutes }}
-          >
-            {`${startDay} ${startTime}`}
-          </Moment>
-        </div>
+          </HalfWidthContainer>
+        </CalculatorPageFlexContainer>
       </Fragment>
     )
   }
