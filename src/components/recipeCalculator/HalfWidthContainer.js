@@ -3,7 +3,7 @@ import tw from "tailwind.macro"
 
 const HalfWidthContainer = styled.div`
   ${tw`
-  w-full  pr-2
+ sm:w-1/2 pr-2
   `}
 `
 

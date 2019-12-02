@@ -201,13 +201,6 @@ class CalculatorApp extends Component {
 
           <TimeFlexContainer>
             <FlexFullContainer>
-              <PickTime
-                startTime={startTime}
-                startDay={startDay}
-                onChange={this.handleStartTimeInputChange}
-                onSubmit={this.pickStartTime}
-              />
-
               {startTime === "" && startDay === "" ? (
                 <div></div>
               ) : (
@@ -219,19 +212,18 @@ class CalculatorApp extends Component {
                     >
                       {`${startDay} ${startTime}`}
                     </Moment>
-                    <SmallText>End Time</SmallText>
+                    <SmallText>Your Finish Time</SmallText>
                   </MomentStyle>
                 </Fragment>
               )}
+              <PickTime
+                startTime={startTime}
+                startDay={startDay}
+                onChange={this.handleStartTimeInputChange}
+                onSubmit={this.pickStartTime}
+              />
             </FlexFullContainer>
             <FlexFullContainer>
-              <PickEndTime
-                endTime={endTime}
-                endDay={endDay}
-                onChange={this.handleEndTimeInputChange}
-                onSubmit={this.pickEndTime}
-              />
-
               {endTime === "" && endDay === "" ? (
                 <div></div>
               ) : (
@@ -243,10 +235,16 @@ class CalculatorApp extends Component {
                     >
                       {`${endDay} ${endTime}`}
                     </Moment>
-                    <SmallText>Start Time</SmallText>
+                    <SmallText>Your Start Time</SmallText>
                   </MomentStyle>
                 </Fragment>
               )}
+              <PickEndTime
+                endTime={endTime}
+                endDay={endDay}
+                onChange={this.handleEndTimeInputChange}
+                onSubmit={this.pickEndTime}
+              />
             </FlexFullContainer>
           </TimeFlexContainer>
 

@@ -7,7 +7,7 @@ import FormLabel from "./formLabel"
 
 const CardContainer = styled.div`
   ${tw` 
-     mt-2 max-w-1/2 flex flex-col w-full border rounded border-gray-400  px-3 py-2 mb-4 bg-gray-200
+     mt-2  flex flex-col  border rounded border-gray-400  px-3 py-2 mb-4 bg-gray-200
   `}
 `
 const LeftContent = styled.div`

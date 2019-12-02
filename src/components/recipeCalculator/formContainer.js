@@ -3,7 +3,7 @@ import tw from "tailwind.macro"
 
 const FormContainer = styled.div`
   ${tw`
-  w-full   my-2 md:my-3
+  w-full   my-2 md:my-3 
   `}
 `
 
