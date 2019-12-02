@@ -5,7 +5,7 @@ import tw from "tailwind.macro"
 
 const FormButton = styled.button`
   ${tw`
-        bg-teal-700 hover:bg-purple-800 text-white font-semibold py-1 px-2 rounded mr-2 cursor-pointer   text-center
+       text-gray-700 text-sm font-semibold hover:underline   cursor-pointer   text-center
     `}
 `
 

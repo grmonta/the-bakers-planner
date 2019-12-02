@@ -12,6 +12,8 @@ import HalfWidthContainer from "./HalfWidthContainer"
 import TimeFlexContainer from "./TimeFlexContainer"
 import FlexFullContainer from "./FlexFullContainer"
 import FlexHalfContainer from "./FlexHalfContainer"
+import MomentStyle from "./momentStyle"
+import SmallText from "./smallText"
 
 class CalculatorApp extends Component {
   state = {
@@ -210,14 +212,15 @@ class CalculatorApp extends Component {
                 <div></div>
               ) : (
                 <Fragment>
-                  <Moment
-                    format="dddd @ hh:mm a"
-                    add={{ hours: totalHours, minutes: totalMinutes }}
-                  >
-                    {`${startDay} ${startTime}`}
-                  </Moment>
-
-                  <p>Finish Time</p>
+                  <MomentStyle>
+                    <Moment
+                      format="dddd @ hh:mm a"
+                      add={{ hours: totalHours, minutes: totalMinutes }}
+                    >
+                      {`${startDay} ${startTime}`}
+                    </Moment>
+                    <SmallText>End Time</SmallText>
+                  </MomentStyle>
                 </Fragment>
               )}
             </FlexFullContainer>
@@ -233,13 +236,15 @@ class CalculatorApp extends Component {
                 <div></div>
               ) : (
                 <Fragment>
-                  <Moment
-                    format="dddd @ hh:mm a"
-                    subtract={{ hours: totalHours, minutes: totalMinutes }}
-                  >
-                    {`${endDay} ${endTime}`}
-                  </Moment>
-                  <p>Start Time</p>
+                  <MomentStyle>
+                    <Moment
+                      format="dddd @ hh:mm a"
+                      subtract={{ hours: totalHours, minutes: totalMinutes }}
+                    >
+                      {`${endDay} ${endTime}`}
+                    </Moment>
+                    <SmallText>Start Time</SmallText>
+                  </MomentStyle>
                 </Fragment>
               )}
             </FlexFullContainer>

@@ -38,7 +38,7 @@ export const PickEndTime = ({ endDay, endTime, onChange, onSubmit }) => (
           />
         </FormInputContainer>
       </InputGroup>
-      <Button type="submit">Calculate </Button>
+      <Button type="submit">Recalculate </Button>
     </form>
   </FormContainer>
 )
